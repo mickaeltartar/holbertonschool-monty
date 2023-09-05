@@ -1,3 +1,4 @@
+#define DELIMITERS " \n\t\r"
 #ifndef MONTY_H_
 #define MONTY_H_
 
@@ -6,6 +7,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <ctype.h>
+
 
 /* Structures */
 
@@ -20,7 +26,7 @@
  */
 typedef struct stack_s
 {
-        int n;
+	int n;
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
@@ -36,13 +42,16 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        void (*f)(stack_t **stack, unsigned int lineNumber);
 } instruction_t;
 
 /* Prototypes*/
 
-
-
-
+int main (int argc, char **argv);
+int opcode_struct(char *opcode, stack_t **stack, unsigned int lineNumber);
+void _push(stack_t **stack, unsigned int lineNumber, char *n);
+void _pall(stack_t **stack, unsigned int lineNumber);
+void _freeAll(stack_t *stack, char *line, FILE *filePointer);
+void _freeStack(stack_t **stack);
 
 #endif
