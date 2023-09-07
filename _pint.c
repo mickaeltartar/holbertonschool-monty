@@ -10,13 +10,10 @@ void _pint(stack_t **stack, unsigned int __attribute__((unused)) lineNumber)
 {
 	stack_t *current = *stack;
 
-	if (stack == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", lineNumber);
 		exit(EXIT_FAILURE);
 	}
-	if (stack != NULL)
-	{
-		printf("%d\n", current->n);
-	}
+	printf("%d\n", current->n);
 }
