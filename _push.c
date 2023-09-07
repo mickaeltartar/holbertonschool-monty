@@ -1,48 +1,47 @@
 #include "monty.h"
 
 /**
- * _push - add new item to top of the stack
- * @stack: pointer to stack
- * @n: integer
- * @lineNumber: line number of instructions
- * Return: 0 on success otherwise -1
-*/
+ * _isDigit - check if the string contains only digits
+ * @arg: pointer on argument to check
+ * Return: 0 if only digits are found, 1 otherwise
+ */
 
-void _push(stack_t **stack, unsigned int lineNumber, char *n)
+int _isDigit(char *arg)
 {
-	stack_t *new;
 	int index;
 
-	if (n == NULL)
+	for (index = 0; arg[index]; index++)
 	{
-		printf("L%d: usage: push integer\n", lineNumber);
-		exit(EXIT_FAILURE);
-	}
-
-	for (index = 0; n[index] != '\0'; index++)
-	{
-		if (n[0] == '-' && index == 0)
+		if (arg[index] == '-' && index == 0)
 			continue;
-		if (isdigit(n[index]) == 0)
-		{
-			printf("L%d: usage: push integer\n", lineNumber);
-			exit(EXIT_FAILURE);
-		}
+		if (isdigit(arg[index]) == 0)
+			return (1);
 	}
+	return (0);
+}
 
-	new = malloc(sizeof(stack_t));
-	if (new == NULL)
+
+/**
+ *_push - push an integer onto the stack
+ *@stack: double pointer to head of stack
+ *@lineNumber: line number of file we are processing
+ */
+
+void _push(stack_t **stack, unsigned int lineNumber)
+{
+	int data;
+	char *arg;
+
+	arg = strtok(NULL, "\n\t ");
+	if (arg == NULL || _isDigit(arg))
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "L%u: usage: push integer\n", lineNumber);
 		exit(EXIT_FAILURE);
 	}
-	new->n = atoi(n);
-	new->prev = NULL;
-	new->next = NULL;
-	if (*stack != NULL)
+	data = atoi(arg);
+	if (addNode(stack, data) == NULL)
 	{
-		new->next = *stack;
-		(*stack)->prev = new;
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
-	*stack = new;
 }

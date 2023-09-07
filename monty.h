@@ -1,4 +1,3 @@
-#define DELIMITERS " \n\t\r"
 #ifndef MONTY_H_
 #define MONTY_H_
 
@@ -11,7 +10,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <ctype.h>
-
 
 /* Structures */
 
@@ -48,10 +46,12 @@ typedef struct instruction_s
 /* Prototypes*/
 
 int main (int argc, char **argv);
-int opcode_struct(char *opcode, stack_t **stack, unsigned int lineNumber);
-void _push(stack_t **stack, unsigned int lineNumber, char *n);
+void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber);
+void _push(stack_t **stack, unsigned int lineNumber);
 void _pall(stack_t **stack, unsigned int lineNumber);
-void _freeAll(stack_t *stack, char *line, FILE *filePointer);
-void _freeStack(stack_t **stack);
+stack_t *addNode(stack_t **stack, int n);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+void _freeAll(stack_t *stack, FILE *filePointer);
+int _isDigit(char *arg);
 
 #endif

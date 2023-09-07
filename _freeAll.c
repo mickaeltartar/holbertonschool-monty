@@ -1,35 +1,20 @@
 #include "monty.h"
 
 /**
- * _freeStack - frees a stack_t stack
- * @stack: stack to be freed
- * Return: void
-*/
+ * _freeAll - function to free and leave proper
+ * @stack: pointer to head of stack
+ * @filePointer: pointer to file opened
+ */
 
-void _freeStack(stack_t **stack)
+void _freeAll(stack_t *stack, FILE *filePointer)
 {
-	stack_t *current;
+	stack_t *tmp;
 
-	while (*stack != NULL)
+	while (stack != NULL)
 	{
-		current = *stack;
-		*stack = (*stack)->next;
-		free(current);
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
 	}
-}
-
-/**
- * _freeAll - free line and filePointer
- * @stack: stack to free
- * @line: line to free from getline
- * @filePointer: file pointer to free
- * Return: void
-*/
-
-void _freeAll(stack_t *stack, char *line, FILE *filePointer)
-{
-	if (stack != NULL)
-		_freeStack(&stack);
-	free(line);
 	fclose(filePointer);
 }
