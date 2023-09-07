@@ -25,6 +25,6 @@ void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber)
 			return;
 		}
 	}
-	printf("L%d: unknown instruction %s\n", lineNumber, opCode);
+	fprintf(stderr, "L%d: unknown instruction %s\n", lineNumber, opCode);
 	exit(EXIT_FAILURE);
 }
