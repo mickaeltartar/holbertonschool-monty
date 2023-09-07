@@ -11,6 +11,7 @@ void _pstr(stack_t **stack, unsigned int __attribute__((unused)) lineNumber)
 {
 	char c;
 	stack_t *current;
+
 	current = *stack;
 
 	while (current != NULL)
@@ -23,7 +24,6 @@ void _pstr(stack_t **stack, unsigned int __attribute__((unused)) lineNumber)
 		}
 		else
 			break;
-		/*current = current->next;*/
 	}
 	putchar('\n');
 
