@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 	{
 		line_number++;
 		token = strtok(str, "\n\t ");
-		if (token != NULL)
+		if (token != NULL && token[0] != '#')
 		{
 			_getOp(token, &stack, line_number);
 		}
