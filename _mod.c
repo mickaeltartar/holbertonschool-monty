@@ -9,7 +9,7 @@
 void _mod(stack_t **stack, unsigned int lineNumber)
 {
 	stack_t *current = *stack;
-b
+
 	if (*stack == NULL || current->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", lineNumber);
