@@ -23,10 +23,11 @@ void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber)
 		{"div", _div},
 		{"mul", _mul},
 		{"mod", _mod},
+		{"pchar", _pchar},
 		{NULL, NULL}
-		};
+	};
 
-		for (index = 0; opCodes[index].opcode != NULL; index++)
+	for (index = 0; opCodes[index].opcode != NULL; index++)
 	{
 		if (strcmp(opCode, opCodes[index].opcode) == 0)
 		{
