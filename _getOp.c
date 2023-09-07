@@ -19,6 +19,7 @@ void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber)
 		{"swap", _swap},
 		{"add", _add},
 		{"nop", _nop},
+		{"sub", _sub},
 		{NULL, NULL}
 		};
 
