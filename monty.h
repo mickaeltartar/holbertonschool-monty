@@ -53,5 +53,11 @@ stack_t *addNode(stack_t **stack, int n);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void _freeAll(stack_t *stack, FILE *filePointer);
 int _isDigit(char *arg);
+void _pint(stack_t **stack, unsigned int __attribute__((unused)) lineNumber);
+void _pop(stack_t **stack, unsigned int lineNumber);
+void _swap(stack_t **stack, unsigned int lineNumber);
+void _add(stack_t **stack, unsigned int lineNumber);
+void _nop(stack_t **stack, unsigned int lineNumber);
+
 
 #endif

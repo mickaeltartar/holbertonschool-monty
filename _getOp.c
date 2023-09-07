@@ -14,6 +14,11 @@ void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber)
 	instruction_t opCodes[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"swap", _swap},
+		{"add", _add},
+		{"nop", _nop},
 		{NULL, NULL}
 		};
 
