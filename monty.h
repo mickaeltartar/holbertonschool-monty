@@ -53,6 +53,7 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 void _getOp(char *opCode, stack_t **stack, unsigned int lineNumber);
 void _pint(stack_t **stack, unsigned int __attribute__((unused)) lineNumber);
 void _pstr(stack_t **stack, unsigned int __attribute__((unused)) lineNumber);
+void _rotl(stack_t **stack, unsigned int __attribute__((unused)) lineNumber);
 void _push(stack_t **stack, unsigned int lineNumber);
 void _pall(stack_t **stack, unsigned int lineNumber);
 void _pop(stack_t **stack, unsigned int lineNumber);
